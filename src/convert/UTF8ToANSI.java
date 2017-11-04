@@ -17,21 +17,16 @@ import java.util.Arrays;
  * 本段代码用以转换难以通过常规手段恢复的中文乱码，仅针对由于错误使用
  * ANSI-US(Windows-1252或ISO-8859-1)转UTF-8函数对GBK编码的中文进行转换后产生的乱码。
  * 对于其他情况的乱码，简单修改源代码后，相信也可以解决。
- * <p>注：在纯英文的Windows系统环境下 (Control Pannel -- Region -- Administrative--
- * Language for non-Unicode programs也需要设置为English)，
- * 可以直接使用Notepad++对此类乱码进行转码处理。具体方法为：先点击菜单栏中的Encoding -- Convert to ANSI，
- * 将文件转换为系统默认的ANSI-US格式（如果是中文系统，就会转换为GBK，导致转换失败），即Windows-1252，再点击Encoding -- Character sets -- 
- * Chinese -- GB2312(Simplified Chinese)，以GB2312编码解析二进制源码，就会看到熟悉的汉字！</p>
+ * <p>注：在纯英文的Windows系统环境下 ，可以直接使用Notepad++对此类乱码进行转码处理。</p><p>
+ * 具体方法为：</p><p>
+ * 一、首先确保操作系统的System Locale也设为英语： Control Pannel -- Region -- Administrative--
+ * Language for non-Unicode programs也需要设置为English。</p><p>
+ * 二、使用Notepad++打开包含乱码的文件，点击菜单栏中的Encoding -- Convert to ANSI，
+ * 将文件转换为系统默认的ANSI-US编码，即Windows-1252（如果是中文系统，就会转换为GBK，导致转换失败），
+ * 再点击Encoding -- Character sets -- Chinese -- GB2312(Simplified Chinese)，
+ * 以GB2312编码解析二进制源码，就会看到熟悉的汉字！</p>
  * @author 何晶   He, Jing
  * @version 1.0 &nbsp; 2017/11/5
- *
- */
-/**
- * @author hejin
- *
- */
-/**
- * @author hejin
  *
  */
 public class UTF8ToANSI {

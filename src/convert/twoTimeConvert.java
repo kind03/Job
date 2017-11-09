@@ -21,7 +21,7 @@ import java.util.Arrays;
  * originEncoding：乱码文件最原始的编码。以前文的例子为例，该参数应填写GBK。默认值为GBK。</p><p>
  * outputEncoding：最后输出文件的编码。以前文的例子为例，该参数可填写：GBK、UTF-8、UTF-16等支持中文字符的编码。默认值为UTF-8。</p><p>
  * 该程序所支持的编码为所有Java所支持的编码类型，请参考：http://docs.oracle.com/javase/8/docs/technotes/guides/intl/encoding.doc.html</p><p>
- * 我在GitHub上提供了测试用乱码文件，可以进行测试。https://github.com/kind03/Job/blob/master/test_resources/MessyCodeGBK-Windows1252-UTF.txt</p><p>
+ * 我在GitHub上提供了测试用乱码文件，可以进行测试。https://github.com/kind03/Job/blob/master/test_resources/MessyCodeGBK-Windows1252-UTF.txt</p>
  * @author 何晶   He, Jing
  * @version 1.3 &nbsp; 2017/11/9
  *
@@ -159,14 +159,15 @@ public class twoTimeConvert {
 			fos.write(converted);
 		}
 		//for the end part of the document
-		//can't use len=fis.read(buffer) since buffer has been read into in the while loop for the last time.
+		//can't use len=fis.read(buffer) since buffer has already got the bytes 
+		//of the last part in the while loop above
 		if(len < segmentSize) {
 			//to check the value of len
-			System.out.println("len = " + len);
+			System.out.println("last part len = " + len);
 			if (len>0) {
 				validBuffer = Arrays.copyOf(buffer, len);
 			} else {
-				//in case the file length is the multiple of 8
+				//in case the file length is the multiple of segmentSize
 				//in this case, the length of last segment will be 0
 				//only need to write what's in the left0 or left1
 				validBuffer = null;
